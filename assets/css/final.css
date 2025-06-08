@@ -1,0 +1,130 @@
+.love-container {
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(120deg, #ff94c2, #ff2e78, #ff0055);
+    animation: gradientBG 15s ease infinite;
+    background-size: 400% 400%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.center-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 800px;
+    width: 90%;
+    margin: 20px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.big-text {
+    font-size: clamp(3em, 10vw, 6em);
+    font-weight: 700;
+    background: linear-gradient(45deg, #fff, #ffd6e7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    animation: pulseText 2s ease-in-out infinite;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.message {
+    font-size: clamp(1.1em, 4vw, 1.5em);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    line-height: 1.8;
+    background: rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    animation: fadeIn 2s ease;
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: translateZ(20px);
+    font-weight: 300;
+}
+
+.floating-heart {
+    position: fixed;
+    color: white;
+    font-size: clamp(20px, 4vw, 30px);
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+    animation: floatUp var(--duration) ease-in-out forwards;
+    opacity: 0;
+    transform-style: preserve-3d;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes pulseText {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    animation: sparkle var(--duration) linear infinite;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}

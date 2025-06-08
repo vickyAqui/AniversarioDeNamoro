@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eu te Amo 💖</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <h1>Eu te Amo! 💖</h1>
+    
+    <div class="message-container">
+        <p class="final-message">
+            Meu amor... ✨<br><br>
+            Chegamos ao final dessa jornada cheia de surpresas,<br>
+            mas nossa história de amor continua...<br><br>
+            Você é a pessoa mais especial do mundo pra mim! 💝<br>
+            Cada momento contigo é um presente! 🎁<br>
+            Cada sorriso seu ilumina meu dia! ⭐<br><br>
+            Te amo infinitamente! 💕
+        </p>
+    </div>
+
+    <div id="floating-hearts"></div>
+
+    <style>        .message-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            margin: 20px auto;
+            border: 2px solid #d63384;
+            animation: fadeIn 1s ease;
+            position: relative;
+            overflow: visible;
+            box-shadow: 0 0 20px rgba(214, 51, 132, 0.2);
+        }
+
+        .final-message {
+            font-size: 1.5em;
+            line-height: 1.6;
+            color: #d63384;
+        }
+
+        #floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }        .heart {
+            position: absolute;
+            animation: float linear forwards;
+            filter: drop-shadow(0 0 3px rgba(214, 51, 132, 0.3));
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(50vh) translateX(100px) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-50px) translateX(200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Adiciona corações fixos nos cantos */
+        .message-container::before,
+        .message-container::after {
+            content: '💝';
+            position: absolute;
+            font-size: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        .message-container::before {
+            top: -15px;
+            left: -15px;
+        }
+
+        .message-container::after {
+            bottom: -15px;
+            right: -15px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + '%';
+              const hearts = ['❤️', '💖', '💝', '💕', '💗', '💓', '💘', '💞'];
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            
+            // Tamanho aleatório para cada coração
+            const size = Math.random() * (40 - 15) + 15;
+            heart.style.fontSize = size + 'px';
+            
+            // Duração aleatória da animação
+            const duration = Math.random() * (6 - 2) + 2;
+            heart.style.animationDuration = duration + 's';
+            
+            document.getElementById('floating-hearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Criar corações em diferentes posições
+        function createHearts() {
+            // Criar 3 corações de uma vez em posições diferentes
+            for (let i = 0; i < 3; i++) {
+                createHeart();
+            }
+        }
+
+        setInterval(createHearts, 200);
+
+        // Adiciona efeito de hover no título
+        document.querySelector('h1').addEventListener('mouseover', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+
+        document.querySelector('h1').addEventListener('mouseout', function() {
+            this.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
